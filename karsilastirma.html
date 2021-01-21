@@ -35,235 +35,112 @@
   
 <div class="content2" >
   <h1 align="center">İngiltere Türkiye Covid Verileri karşılaştırma</h1>
+  
   <script>
     window.onload = function () {
+                  
+            
+            var options = {
+                animationEnabled: true,
+                theme: "white",
+                title:{
+                    text: "İNGİLTERE  &&  Turkiye"
+                },
+                axisX:{
+                    valueFormatString: "DD MMM YYYY"
+                },
+                axisY: {
+                    title: "AKTİF VAKA SAYILARI",
+                    suffix: "K",
+                    minimum: 0,
+                },
+                toolTip:{
+                    shared:true
+                },  
+                legend:{
+                    cursor:"pointer",
+                    verticalAlign: "bottom",
+                    horizontalAlign: "left",
+                    dockInsidePlotArea: true,
+                    itemclick: toogleDataSeries
+                },
+            };   
+            var tr = [];
+            var uk = [];
+            options.data = [
+                {
+                    type: "line",
+                    showInLegend: true,
+                    name: "Türkiye Vaka Sayısı",
+                    markerType: "square",
+                    xValueFormatString: "DD MMM YYYY",
+                    color: "red",
+                    yValueFormatString: "#,##0K"
+                },
+                {
+                    type: "line",
+                    showInLegend: true,
+                    name: "İngiltere Vaka Sayısı",
+                    lineDashType: "dash",
+                    color: "#0d0b8c",
+                    yValueFormatString: "#,##0K"
+                },
+            ];
+            
+             $.ajax({
+                    type: 'GET',
+                    url: 'https://api.covid19api.com/country/turkey?from=2020-10-01T00:00:00Z&to=2021-01-15T00:00:00Z',
+                    dataType: 'json',
+                    success: function(data) {
+                        for (i = 0; i < data.length; i++) {
+                            tr.push({x: new Date(data[i].Date), y: data[i].Active})
+                        }
+                        options.data[0].dataPoints = tr;
+                        $("#chartContainer").CanvasJSChart(options); 
+                    }
+                });
+               
+                
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://api.covid19api.com/country/uk?from=2020-10-01T00:00:00Z&to=2021-01-15T00:00:00Z',
+                    dataType: 'json',
+                    success: function(data) {
+                        for (i = 0; i < data.length; i++) {
+                            uk.push({x: new Date(data[i].Date), y: data[i].Active})
+                        }
+                        options.data[1].dataPoints = uk;
+                        $("#chartContainer").CanvasJSChart(options); 
+                        
+                    }
+                });	
+            
+                
+                
+                
+               
+            function toogleDataSeries(e){
+                if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else{
+                    e.dataSeries.visible = true;
+                }
+                e.chart.render();
+            }
+            
+            }
+            </script>
     
-    var chart = new CanvasJS.Chart("chartContainer", {
-      animationEnabled: true,
-      theme: "light2",
-      title:{
-        text: "İNGİLTERE - TÜRKİYE VAKA SAYILARI"
-      },
-      axisX:{
-        valueFormatString: "DD MM",
-        crosshair: {
-          enabled: true,
-          snapToDataPoint: true
-        }
-      },
-      axisY: {
-        title: "Vaka Sayıları",
-        includeZero: true,
-        crosshair: {
-          enabled: true
-        }
-      },
-      toolTip:{
-        shared:true
-      },  
-      legend:{
-        cursor:"pointer",
-        verticalAlign: "bottom",
-        horizontalAlign: "left",
-        dockInsidePlotArea: true,
-        itemclick: toogleDataSeries
-      },
-      data: [{
-        type: "line",
-        showInLegend: true,
-        name: "Total Visit",
-        markerType: "square",
-        xValueFormatString: "YYYY MM, DD",
-        color: "red",
-        dataPoints: [
-          { x: new Date(2020, 11, 01), y: 41661 },
-          { x: new Date(2020, 11, 02), y: 42366 },
-          { x: new Date(2020, 11, 03), y: 42813 },
-          { x: new Date(2020, 11, 04), y: 43286 },
-          { x: new Date(2020, 11, 05), y: 43802 },
-          { x: new Date(2020, 11, 06), y: 44241 },
-          { x: new Date(2020, 11, 07), y: 44715 },
-          { x: new Date(2020, 11, 08), y: 45129 },
-          { x: new Date(2020, 11, 09), y: 45573 },
-          { x: new Date(2020, 11, 10), y: 45800 },
-          { x: new Date(2020, 11, 11), y: 46295 },
-          { x: new Date(2020, 11, 12), y: 46867 },
-          { x: new Date(2020, 11, 13), y: 47809 },
-          { x: new Date(2020, 11, 14), y: 48535 },
-          { x: new Date(2020, 11, 15), y: 49108 },
-          { x: new Date(2020, 11, 16), y: 49618 },
-          { x: new Date(2020, 11, 17), y: 50646 },
-          { x: new Date(2020, 11, 18), y: 52153 },
-          { x: new Date(2020, 11, 19), y: 53654 },
-          { x: new Date(2020, 11, 20), y: 55597 },
-          { x: new Date(2020, 11, 21), y: 57761 },
-          { x: new Date(2020, 11, 22), y: 59827 },
-          { x: new Date(2020, 11, 23), y: 63133 },
-          { x: new Date(2020, 11, 24), y: 66675 },
-          { x: new Date(2020, 11, 25), y: 69410 },
-          { x: new Date(2020, 11, 26), y: 101953 },
-          { x: new Date(2020, 11, 27), y: 142437 },
-          { x: new Date(2020, 11, 28), y: 168747 },
-          { x: new Date(2020, 11, 29), y: 193828 },
-          { x: new Date(2020, 11, 30), y: 220374 },
+    </head>
+    <body>
+    <div id="chartContainer" style="height: 395px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    </body>
+    </html>
+
+
   
-          { x: new Date(2020, 12, 01), y: 245701 },
-          { x: new Date(2020, 12, 02), y: 272610 },
-          { x: new Date(2020, 12, 03), y: 300614 },
-          { x: new Date(2020, 12, 04), y: 328346 },
-          { x: new Date(2020, 12, 05), y: 355946 },
-          { x: new Date(2020, 12, 06), y: 382142 },
-          { x: new Date(2020, 12, 07), y: 409059 },
-          { x: new Date(2020, 12, 08), y: 436801 },
-          { x: new Date(2020, 12, 09), y: 462450 },
-          { x: new Date(2020, 12, 10), y: 1280223 },
-          { x: new Date(2020, 12, 11), y: 1306587 },
-          { x: new Date(2020, 12, 12), y: 212045 },
-          { x: new Date(2020, 12, 13), y: 216531 },
-          { x: new Date(2020, 12, 14), y: 217755 },
-          { x: new Date(2020, 12, 15), y: 220375 },
-          { x: new Date(2020, 12, 16), y: 219931 },
-          { x: new Date(2020, 12, 17), y: 216709 },
-          { x: new Date(2020, 12, 18), y: 210928 },
-          { x: new Date(2020, 12, 19), y: 207366 },
-          { x: new Date(2020, 12, 20), y: 206218 },
-          { x: new Date(2020, 12, 21), y: 190648 },
-          { x: new Date(2020, 12, 22), y: 177543 },
-          { x: new Date(2020, 12, 23), y: 162442 },
-          { x: new Date(2020, 12, 24), y: 146305 },
-          { x: new Date(2020, 12, 25), y: 128081 },
-          { x: new Date(2020, 12, 26), y: 119715 },
-          { x: new Date(2020, 12, 27), y: 112470 },
-          { x: new Date(2020, 12, 28), y: 105207 },
-          { x: new Date(2020, 12, 29), y: 99755 },
-          { x: new Date(2020, 12, 30), y: 95001 },
-          { x: new Date(2020, 12, 31), y: 87121 },
-  
-          { x: new Date(2021, 01, 01), y: 85002 },
-          { x: new Date(2021, 01, 02), y: 84308 },
-          { x: new Date(2021, 01, 03), y: 83890 },
-          { x: new Date(2021, 01, 04), y: 87492 },
-          { x: new Date(2021, 01, 05), y: 92884 },
-          { x: new Date(2021, 01, 06), y: 97821 },
-          { x: new Date(2021, 01, 07), y: 101587 },
-          { x: new Date(2021, 01, 08), y: 102986 },
-          { x: new Date(2021, 01, 09), y: 104440 },
-          { x: new Date(2021, 01, 10), y: 105299 },
-          { x: new Date(2021, 01, 11), y: 105044 },
-          { x: new Date(2021, 01, 12), y: 104669 },
-          { x: new Date(2021, 01, 13), y: 104587 },
-          { x: new Date(2021, 01, 14), y: 104368 },
-          { x: new Date(2021, 01, 15), y: 103404 }
-        ]
-      },
-      {
-        type: "line",
-        showInLegend: true,
-        name: "Unique Visit",
-        lineDashType: "dash",
-        color:"blue",
-        dataPoints: [
-        { x: new Date(2020, 11, 01), y: 988197 },
-        { x: new Date(2020, 11, 02), y: 1007011 },
-        { x: new Date(2020, 11, 03), y: 1026632 },
-        { x: new Date(2020, 11, 04), y: 1051317 },
-        { x: new Date(2020, 11, 05), y: 1075077 },
-        { x: new Date(2020, 11, 06), y: 1098009 },
-        { x: new Date(2020, 11, 07), y: 1122553 },
-        { x: new Date(2020, 11, 08), y: 1142969 },
-        { x: new Date(2020, 11, 09), y: 1164125 },
-                  { x: new Date(2020, 11, 10), y: 1184005 },
-                  { x: new Date(2020, 11, 11), y: 1206360 },
-                  { x: new Date(2020, 11, 12), y: 1239267 },
-                  { x: new Date(2020, 11, 13), y: 1266192 },
-                  { x: new Date(2020, 11, 14), y: 1292590 },
-                  { x: new Date(2020, 11, 15), y: 1317384 },
-                  { x: new Date(2020, 11, 16), y: 1338534 },
-                  { x: new Date(2020, 11, 17), y: 1357987 },
-        { x: new Date(2020, 11, 18), y: 1377067 },
-        { x: new Date(2020, 11, 19), y: 1399481 },
-        { x: new Date(2020, 11, 20), y: 1419222 },
-        { x: new Date(2020, 11, 21), y: 1438757 },
-                  { x: new Date(2020, 11, 22), y: 1457021 },
-                  { x: new Date(2020, 11, 23), y: 1472265 },
-                  { x: new Date(2020, 11, 24), y: 1482956 },
-                  { x: new Date(2020, 11, 25), y: 1500474 },
-                  { x: new Date(2020, 11, 26), y: 1517531 },
-                  { x: new Date(2020, 11, 27), y: 1531750 },
-                  { x: new Date(2020, 11, 28), y: 1547142 },
-                  { x: new Date(2020, 11, 29), y: 1559082 },
-                  { x: new Date(2020, 11, 30), y: 1571209 },
-          
-                  { x: new Date(2020, 12, 01), y: 1584035 },
-                  { x: new Date(2020, 12, 02), y: 1599557 },
-                  { x: new Date(2020, 12, 03), y: 1614021 },
-                  { x: new Date(2020, 12, 04), y: 1629815 },
-                  { x: new Date(2020, 12, 05), y: 1644957 },
-                  { x: new Date(2020, 12, 06), y: 1661997 },
-                  { x: new Date(2020, 12, 07), y: 1676526 },
-                  { x: new Date(2020, 12, 08), y: 1688208 },
-                  { x: new Date(2020, 12, 09), y: 1704253 },
-                  { x: new Date(2020, 12, 10), y: 1724701 },
-                  { x: new Date(2020, 12, 11), y: 1745949 },
-          { x: new Date(2020, 12, 12), y: 1766930 },
-          { x: new Date(2020, 12, 13), y: 1785233 },
-          { x: new Date(2020, 12, 14), y: 1805264 },
-          { x: new Date(2020, 12, 15), y: 1823208 },
-          { x: new Date(2020, 12, 16), y: 1847757 },
-                  { x: new Date(2020, 12, 17), y: 1882608 },
-                  { x: new Date(2020, 12, 18), y: 1910626 },
-                  { x: new Date(2020, 12, 19), y: 1937144 },
-                  { x: new Date(2020, 12, 20), y: 1972746 },
-                  { x: new Date(2020, 12, 21), y: 2005895 },
-                  { x: new Date(2020, 12, 22), y: 2042007 },
-                  { x: new Date(2020, 12, 23), y: 2080500 },
-                  { x: new Date(2020, 12, 24), y: 2118962 },
-                  { x: new Date(2020, 12, 25), y: 2151117 },
-                  { x: new Date(2020, 12, 26), y: 2185600 },
-                  { x: new Date(2020, 12, 27), y: 2217593 },
-                  { x: new Date(2020, 12, 28), y: 2258621 },
-                  { x: new Date(2020, 12, 29), y: 2311298 },
-                  { x: new Date(2020, 12, 30), y: 2360340 },
-                  { x: new Date(2020, 12, 31), y: 2415268 },
-  
-          { x: new Date(2021, 01, 01), y: 2467940 },
-          { x: new Date(2021, 01, 02), y: 2525219 },
-          { x: new Date(2021, 01, 03), y: 2579755 },
-          { x: new Date(2021, 01, 04), y: 2638132 },
-          { x: new Date(2021, 01, 05), y: 2698174 },
-          { x: new Date(2021, 01, 06), y: 2759455 },
-          { x: new Date(2021, 01, 07), y: 2810911 },
-          { x: new Date(2021, 01, 08), y: 2877639 },
-          { x: new Date(2021, 01, 09), y: 2936541 },
-          { x: new Date(2021, 01, 10), y: 2990918 },
-          { x: new Date(2021, 01, 11), y: 3036558 },
-          { x: new Date(2021, 01, 12), y: 3080848 },
-          { x: new Date(2021, 01, 13), y: 3126809 },
-          { x: new Date(2021, 01, 14), y: 3174243 },
-          { x: new Date(2021, 01, 15), y: 3228724 }
-        ]
-      }]
-    });
-    chart.render();
-    
-    function toogleDataSeries(e){
-      if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-        e.dataSeries.visible = false;
-      } else{
-        e.dataSeries.visible = true;
-      }
-      chart.render();
-    }
-    
-    }
-    </script>
-    <div class="main">
-        
-      <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-  <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-  <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-  </div>
-  </div>
   <div class="footer">
   
     
