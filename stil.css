@@ -1,0 +1,353 @@
+@charset "utf-8";
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color:#039;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+
+ul, ol, dl { 
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	
+	padding-right: 15px;
+	padding-left: 15px; 
+	
+}
+
+
+
+a img { 
+	border: none;
+}
+
+
+a:link {
+	color:black;
+	text-decoration: none; 
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { 
+	text-decoration: none;
+	color:#039;
+}
+
+
+.container {
+	width: 90%;
+	max-width: 1260px;
+	min-width: 780px;
+	background-color: #FFF;
+	margin: 0 auto; 
+}
+
+
+.header {
+	background-color:#CCC ;
+}
+
+.sidebar1 {
+	float: right;
+	width: 35%;
+	background-color:#5B5B5B;
+	padding-bottom: 10px;
+	color:white;
+	
+}
+.content {
+	padding: 10px 0;
+	width: 65%;
+	float:right;
+}
+.tavsiye
+{
+	padding-left:50px;
+	
+}
+.content2{
+	padding: 100px;
+	
+	}
+
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; 
+}
+
+
+ul.nav {
+	list-style: none; 
+	border-top: 1px solid #666; 
+	margin-bottom: 15px;
+}
+ul.nav li {
+	border-bottom: 1px solid #666; 
+}
+ul.nav a, ul.nav a:visited { 
+	padding: 5px 5px 5px 15px;
+	display: block; 
+	text-decoration: none;
+	background-color: #8090AB;
+	color: #000;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { 
+	background-color: #6F7D94;
+	color: #FFF;
+}
+
+
+.footer {
+	padding: 10px 0;
+	background-color: #CCC;
+	position: relative;
+	clear: both; 
+	height:100px;
+}
+
+.fltrt {  
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { 
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { 
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+
+#nav,#nav ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+
+}
+#nav {
+    font-family: "Lucida Sans Unicode",Verdana,Arial,sans-serif;
+    font-size: 13px;
+    height: 36px;
+    list-style: none outside none;
+    margin: 30px auto;
+    text-shadow: 0 -1px 3px #202020;
+    width: 766px;
+	
+
+    
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+
+    -moz-box-shadow: 0px 3px 3px #cecece;
+    -webkit-box-shadow: 0px 3px 3px #cecece;
+    box-shadow: 0 3px 4px #8b8b8b;
+
+    
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #787878), color-stop(0.5, #5E5E5E), color-stop(0.51, #707070), color-stop(1, #838383));
+    background-image: -moz-linear-gradient(center bottom, #787878 0%, #5E5E5E 50%, #707070 51%, #838383 100%);
+    background-color: #5f5f5f;
+}
+#nav li {
+    border-bottom: 1px solid #575757;
+    border-left: 1px solid #929292;
+    border-right: 1px solid #5d5d5d;
+    border-top: 1px solid #797979;
+    display: block;
+    float: left;
+    height: 34px;
+    position: relative;
+    width: 125px;
+}
+#nav > li:first-child {
+    border-left: 0 none;
+    margin-left: 5px;
+}
+#nav ul {
+    left: -9999px;
+    position: absolute;
+    top: -9999px;
+    z-index: 2;
+}
+#nav ul li {
+    background: none repeat scroll 0 0 #838383;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    width: 100%;
+}
+#nav li a {
+    color: #FFFFFF;
+    display: block;
+    line-height: 34px;
+    outline: medium none;
+    text-align: center;
+    text-decoration: none;
+
+    
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #787878), color-stop(0.5, #5E5E5E), color-stop(0.51, #707070), color-stop(1, #838383));
+    background-image: -moz-linear-gradient(center bottom, #787878 0%, #5E5E5E 50%, #707070 51%, #838383 100%);
+    background-color: #5f5f5f;
+}
+
+
+@-webkit-keyframes animation {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    30% {
+        -webkit-transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: scale(1.1);
+    }
+}
+@-moz-keyframes animation {
+    0% {
+        -moz-transform: scale(1);
+    }
+    30% {
+        -moz-transform: scale(1.2);
+    }
+    100% {
+        -moz-transform: scale(1.1);
+    }
+}
+#nav li > a:hover {
+    /* CSS3 animation */
+    -webkit-animation-name: animation;
+    -webkit-animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-direction: normal;
+    -webkit-animation-delay: 0;
+    -webkit-animation-play-state: running;
+    -webkit-animation-fill-mode: forwards;
+
+    -moz-animation-name: animation;
+    -moz-animation-duration: 0.3s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-direction: normal;
+    -moz-animation-delay: 0;
+    -moz-animation-play-state: running;
+    -moz-animation-fill-mode: forwards;
+}
+#nav li:hover ul {
+    left: 0;
+    top: 34px;
+    width: 150px;
+}
+
+
+
+.jssorb01 {
+            position: absolute;
+        }
+        .jssorb01 div, .jssorb01 div:hover, .jssorb01 .av {
+            position: absolute;
+           
+            width: 12px;
+            height: 12px;
+            filter: alpha(opacity=70);
+            opacity: .7;
+            overflow: hidden;
+            cursor: pointer;
+            border: #000 1px solid;
+        }
+        .jssorb01 div { background-color: gray; }
+        .jssorb01 div:hover, .jssorb01 .av:hover { background-color: #d3d3d3; }
+        .jssorb01 .av { background-color: #fff; }
+        .jssorb01 .dn, .jssorb01 .dn:hover { background-color: #555555; }
+
+      
+        .jssora02l, .jssora02r {
+            display: block;
+            position: absolute;
+            
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            background: url('img/a02.png') no-repeat;
+            overflow: hidden;
+        }
+        .jssora02l { background-position: -3px -33px; }
+        .jssora02r { background-position: -63px -33px; }
+        .jssora02l:hover { background-position: -123px -33px; }
+        .jssora02r:hover { background-position: -183px -33px; }
+        .jssora02l.jssora02ldn { background-position: -3px -33px; }
+        .jssora02r.jssora02rdn { background-position: -63px -33px; }
+        .jssora02l.jssora02lds { background-position: -3px -33px; opacity: .3; pointer-events: none; }
+        .jssora02r.jssora02rds { background-position: -63px -33px; opacity: .3; pointer-events: none; }
+		
+		.resim {
+	padding-left:75px ;
+	float:left;
+    margin-right: 2px;
+    margin-left: 4px;
+	margin-bottom:30px;
+	height:128px;
+
+
+}
+
+		.icerik {
+	float:right;
+    margin-right: 30px;
+	width:380px ;
+
+	
+   
+
+
+}
+
+	
+	.sosyal
+	{
+		float:right;
+		margin:2px;
+		margin-top:20px;
+		margin-right:40px;
+		
+	
+		}
+		
+		.kunye
+		{
+			float:left;
+			margin-left:40px;
+			margin-top:20px;
+			
+			}
+.orta
+{
+	float:left;
+	margin-top:40px;
+	margin-left:140px;
+
+	}
+	
+	.populer a
+	{
+		color:#FFF;
+		}
+		
+		.populer a:hover
+	{
+		color:#039;
+		}
+		
+		.haber
+		{
+			padding-left:17px;
+			padding-bottom:15px;
+			
+			
+			}
